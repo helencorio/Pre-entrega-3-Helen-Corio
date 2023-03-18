@@ -1,15 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from proyecto.models import Curso
+from proyecto.models import Curso, Professors , Entregables , Students
 from proyecto.forms import BuscarCursosForm
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'proyecto/index.html')
+def guardar_profesores(request):
+    
+    if request.method == "POST":
+        print("\n\n\n")
+        nombre = request.POST["nombre"]
+        apellido = request.POST["apellido"]
+        correo = request.POST["correo"]
 
-def profesores(request):
-    return render(request, 'proyecto/profesores.html')
+        profe = Professors(nombre= nombre, apellido= apellido, correo = correo)
+        profe.save()
+
+
+    return render(request, "proyecto/profesores.html")
 
 def entregables(request):
     return render(request, 'proyecto/entregables.html')
@@ -17,10 +25,20 @@ def entregables(request):
 def cursos(request):
     return render(request, 'proyecto/cursos.html')
 
-def estudiantes(request):
-    return render(request, 'proyecto/estudiantes.html')
+def guardar_estudiantes(request):
+        
+    if request.method == "POST":
+        print("\n\n\n")
+        nombre = request.POST["nombre"]
+        apellido = request.POST["apellido"]
+        correo = request.POST["correo"]
 
-def busca_curso(request):
+        student = Students(nombre= nombre, apellido= apellido, correo = correo)
+        student.save()
+
+    return render(request, "proyecto/estudiantes.html")
+
+def guarda_curso(request):
 
     if request.method == "POST":
         print("\n\n\n")
@@ -30,24 +48,18 @@ def busca_curso(request):
         curso.save()
 
 
-    return render(request, "proyecto/buscar_cursos.html")
+    return render(request, "proyecto/cursos.html")
 
 
-def save_form(request):
+
+def buscar_camada(request):
+
     if request.method == "POST":
-        miFormulario = BuscarCursosForm(request.POST) # Aqui me llega la informacion del html
-        print(miFormulario)
 
-        if miFormulario.is_valid():
-            informacion = miFormulario.cleaned_data
-            print(f"\n{informacion}\n")
-            curso = Curso(name=informacion["curso"], camada=informacion["camada"])
-            curso.save()
-            return render(request, "proyecto/index.html")
+            camadas = Curso.objects.filter(camada=int(request.POST["camada"]))
+
+            return render(request, "proyecto/buscar_camada.html", {"data": [camadas]})
     else:
         miFormulario = BuscarCursosForm()
 
-    return render(request, "proyecto/save_form.html", {"miFormulario": miFormulario})
-
-
-
+    return render(request, "proyecto/buscar_camada.html", {"miFormulario": miFormulario})

@@ -16,7 +16,7 @@ Cursos
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">Cursos</h1>
+                            <h1 class="mb-5">Inicio - Buscar camada</h1>
                             <!-- Signup form-->
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -59,20 +59,33 @@ Cursos
         </header>
 
 
-<h1> Página para buscar cursos con form </h1>
+<h1> Página para buscar camada </h1>
 
-<form action=""    method="post">
-    {% csrf_token %}
+<form action=""    method="post">{% csrf_token %}
+
+    <p> Camada: <input type = "number" name="camada">
+    <input type = "submit" value="Enviar">
+
+
+</form>
 
 <table>
+    
+    <th>Id </th>
+    <th>Nombre </th>
+    <th>Camada </th>
+    <tr>
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.camada }}</td>
 
-{{ miFormulario.as_table }}
+
+    </tr>
+
 
 </table>
 
-
-<input type = "submit" value="Enviar">
-</form>   
+{{ data }}
 
 
 {% endblock %}

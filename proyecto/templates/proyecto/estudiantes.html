@@ -3,6 +3,7 @@
 
 {% load static %}
 
+
 {% block title %}
 Estudiantes
 {% endblock %}
@@ -58,5 +59,17 @@ Estudiantes
             </div>
         </header>
 
+
+
+<h1> Página para guardar estudiantes </h1>
+
+<form action=""    method="post">
+    {% csrf_token %}
+
+    <p> Nombre: <input type = "text" name="nombre">
+    <p> Apellido: <input type = "text" name="apellido">
+    <p> Correo: <input type = "text" name="correo">
+    <input type = "submit" value="Enviar">
+</form>   
 
 {% endblock %}
