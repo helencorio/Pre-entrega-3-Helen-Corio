@@ -5,7 +5,7 @@ Cuando se ingresa a la página, lo primero que se ve es la página de inicio, en
 
 - Profesores 
 
-En esta sección se pueden agregar a la base de datos informacion de los profesores:
+En esta sección se pueden agregar a la base de datos informacion de los profesores: \n
 1- Nombre
 2- Apellido
 3- Correo electrónico
