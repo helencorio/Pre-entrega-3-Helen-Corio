@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
 
 class Person:
-    nombre = models.CharField(max_length=30)
-    apellido = models.CharField(max_length=20)
-    correo = models.EmailField()
+    nombre = models.CharField(max_length=30, default='0000', editable=False)
+    apellido = models.CharField(max_length=30, default='0000', editable=False)
+    correo = models.EmailField(default='0000', editable=False)
 
-class Professor(models.Model):
+class Professor(models.Model, Person):
 
     nombre = models.CharField(max_length=30, default='0000', editable=False)
     apellido = models.CharField(max_length=30, default='0000', editable=False)
