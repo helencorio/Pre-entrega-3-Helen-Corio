@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from proyecto.models import Curso, Professors , Entregables , Students
+from proyecto.models import Curso, Professor , Entregable , Student
 from proyecto.forms import BuscarCursosForm
 
 # Create your views here.
@@ -13,17 +13,22 @@ def guardar_profesores(request):
         apellido = request.POST["apellido"]
         correo = request.POST["correo"]
 
-        profe = Professors(nombre= nombre, apellido= apellido, correo = correo)
+        profe = Professor(nombre= nombre, apellido= apellido, correo = correo)
         profe.save()
 
 
     return render(request, "proyecto/profesores.html")
 
-def entregables(request):
-    return render(request, 'proyecto/entregables.html')
+def guardar_entregables(request):
 
-def cursos(request):
-    return render(request, 'proyecto/cursos.html')
+    if request.method == "POST":
+        print("\n\n\n")
+        nombre = request.POST["nombre"]
+        num = request.POST["num"]
+        entrega = Entregable(nombre=nombre, num=num )
+        entrega.save()
+
+    return render(request, 'proyecto/entregables.html')
 
 def guardar_estudiantes(request):
         
@@ -33,7 +38,7 @@ def guardar_estudiantes(request):
         apellido = request.POST["apellido"]
         correo = request.POST["correo"]
 
-        student = Students(nombre= nombre, apellido= apellido, correo = correo)
+        student = Student(nombre= nombre, apellido= apellido, correo = correo)
         student.save()
 
     return render(request, "proyecto/estudiantes.html")

@@ -7,7 +7,7 @@ class Person:
     apellido = models.CharField(max_length=20)
     correo = models.EmailField()
 
-class Professors(models.Model):
+class Professor(models.Model):
 
     nombre = models.CharField(max_length=30, default='0000', editable=False)
     apellido = models.CharField(max_length=30, default='0000', editable=False)
@@ -16,7 +16,7 @@ class Professors(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.correo}"
 
-class Students(models.Model, Person):
+class Student(models.Model, Person):
     
     nombre = models.CharField(max_length=30, default='0000', editable=False)
     apellido = models.CharField(max_length=30, default='0000', editable=False)
@@ -25,11 +25,13 @@ class Students(models.Model, Person):
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.correo}"
 
-class Entregables(models.Model, Person):
-    pass
+class Entregable(models.Model, Person):
+    nombre = models.CharField(max_length=20, default='0000', editable=False)
+    num = models.IntegerField(default='0000', editable=False)
 
-class Cursos(models.Model, Person):
-    pass
+    def __str__(self):
+        return f"{self.nombre} - {self.num}"
+
 
 class Curso(models.Model):
     name = models.CharField(max_length=20)

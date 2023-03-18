@@ -1,11 +1,10 @@
 from django.contrib import admin
-from proyecto.models import Entregables, Professors, Students, Cursos, Curso
+from proyecto.models import Entregable, Professor, Student, Curso
 
 # Register your models here.
-admin.site.register(Entregables)
-admin.site.register(Professors)
-admin.site.register(Students)
-admin.site.register(Cursos)
+admin.site.register(Entregable)
+admin.site.register(Professor)
+admin.site.register(Student)
 admin.site.register(Curso)
 
 
