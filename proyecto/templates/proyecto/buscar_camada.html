@@ -35,7 +35,7 @@ Cursos
 
 <h1> Formulario para buscar cursos por camada </h1>
 
-<form action="/proyecto/buscar_camada/"    method="GET">
+<form action="/proyecto/buscar/"    method="GET">
 
     <input type = "number" name= "camada" id="camada" >
     <input type= "submit" value="Buscar">
@@ -49,7 +49,7 @@ Cursos
 
 <ul>
 {% for curso in cursos %}
-    <li> {{curso.nombre}} </li>
+    <li> {{curso.name}} </li>
     <li> {{curso.camada}} </li>
 {% endfor %}
 

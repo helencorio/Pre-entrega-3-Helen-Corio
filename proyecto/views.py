@@ -80,7 +80,7 @@ def buscar_camada(request):
     if request.GET["camada"]:
 
             camada = request.GET['camada']
-            cursos = Curso.objects.filter(camada_icontains=camada)
+            cursos = Curso.objects.filter(camada=camada)
 
             return render(request, "proyecto/buscar_camada.html", {"cursos": cursos, "camada": camada})
     else:
