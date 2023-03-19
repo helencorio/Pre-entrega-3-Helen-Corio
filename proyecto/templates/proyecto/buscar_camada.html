@@ -35,32 +35,27 @@ Cursos
 
 <h1> Formulario para buscar cursos por camada </h1>
 
-<form action=""    method="post">{% csrf_token %}
+<form action="/proyecto/buscar_camada/"    method="GET">{% csrf_token %}
 
-    <p> Camada: <input type = "number" name="camada">
-    <input type = "submit" value="Enviar">
+    <input type = "number" name= "camada" id="camada" >
+    <input type= "submit" value="Buscar">
 
 
 </form>
 
-<table>
-    
-    <th>Id </th>
-    <th>Nombre </th>
-    <th>Camada </th>
-    <tr>
-        <td>{{ data.id }}</td>
-        <td>{{ data.name }}</td>
-        <td>{{ data.camada }}</td>
+<p>Estamos buscando el: {{camada}} </p>
 
+{% if cursos %}
 
-    </tr>
+<ul>
+{% for curso in cursos %}
+    <li> {{curso.nombre}} </li>
+    <li> {{curso.camada}} </li>
+{% endfor %}
 
+</ul>
 
-</table>
-
-{{ data }}
-
+{% endif %}
 
 {% endblock %}
 

@@ -57,14 +57,33 @@ def guarda_curso(request):
 
 
 
+#def buscar_camada(request):
+
+    #if request.method == "POST":
+
+            #camadas = Curso.objects.filter(camada=int(request.POST["camada"]))
+
+            #return render(request, "proyecto/buscar_camada.html", {"data": [camadas]})
+    #else:
+        #miFormulario = BuscarCursosForm()
+
+    #return render(request, "proyecto/buscar_camada.html", {"miFormulario": miFormulario})
+
+
+def busquedacamada(request):
+
+    return render(request, "proyecto/buscar_camada.html")
+
+
 def buscar_camada(request):
 
-    if request.method == "POST":
+    if request.GET["camada"]:
 
-            camadas = Curso.objects.filter(camada=int(request.POST["camada"]))
+            camada = request.GET['camada']
+            cursos= Curso.objects.filter(camada_icontains=camada)
 
-            return render(request, "proyecto/buscar_camada.html", {"data": [camadas]})
+            return render(request, "proyecto/buscar_camada.html", {"cursos": cursos, "camada": camada})
     else:
-        miFormulario = BuscarCursosForm()
+        respuesta = "No se enviaron datos"
 
-    return render(request, "proyecto/buscar_camada.html", {"miFormulario": miFormulario})
+    return HttpResponse(respuesta)
