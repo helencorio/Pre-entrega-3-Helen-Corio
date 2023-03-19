@@ -1,4 +1,4 @@
-# Pre-entrega-3-Helen-Corio
+# Pre-entrega-nro3-Helen-Corio
 Pre-entrega número 3 de CoderHouse, Helen Corio
 
 Cuando se ingresa a la página, lo primero que se ve es la página de inicio, en donde se pueden buscar por su número de camada, los cursos.
